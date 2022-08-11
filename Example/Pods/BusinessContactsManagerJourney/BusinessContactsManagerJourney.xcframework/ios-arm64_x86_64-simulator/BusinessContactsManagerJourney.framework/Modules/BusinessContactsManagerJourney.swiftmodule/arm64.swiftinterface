@@ -1,0 +1,745 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name BusinessContactsManagerJourney
+import BackbaseDesignSystem
+import BackbaseObservability
+import BusinessDesign
+import BusinessJourneyCommon
+import Combine
+import Foundation
+import QuartzCore
+import Resolver
+import RxCocoa
+import RxRelay
+import RxSwift
+import SDWebImage
+import Shimmer
+import Swift
+import SwiftUI
+import UIKit
+import UIKit/*.UIImage*/
+import _Concurrency
+extension BusinessContactsManagerJourney.Contact {
+  public struct AccessContext : Swift.Codable, Swift.Equatable {
+    public var legalEntityId: Swift.String?
+    public var serviceAgreementId: Swift.String?
+    public var additions: [Swift.String : Swift.String]?
+    public init(legalEntityId: Swift.String? = nil, serviceAgreementId: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+    public static func == (a: BusinessContactsManagerJourney.Contact.AccessContext, b: BusinessContactsManagerJourney.Contact.AccessContext) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails {
+  public struct Configuration {
+    public init()
+    public var analytics: BusinessContactsManagerJourney.AccountDetails.Analytics
+    public var strings: BusinessContactsManagerJourney.AccountDetails.Strings
+    public var images: BusinessContactsManagerJourney.AccountDetails.Images
+    public var uiDataMapper: BusinessContactsManagerJourney.AccountDetails.UIDataMapper
+  }
+}
+public enum AccountDetails {
+}
+extension BusinessContactsManagerJourney.AccountDetails {
+  public static func build(_ contactID: Swift.String, accountID: Swift.String) -> UIKit.UIViewController
+}
+extension BusinessContactsManagerJourney.AccountDetails {
+  public struct Analytics {
+    public init()
+    public var screenLabel: Swift.String?
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails {
+  public struct Images {
+    public init()
+    public var icAddress: UIKit.UIImage?
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails {
+  public struct Strings {
+    public init()
+    public var title: BusinessJourneyCommon.LocalizedString
+    public var emptyStateErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var emptyStateErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorButton: BusinessJourneyCommon.LocalizedString
+    public var contactsErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var contactsErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var contactsErrorButton: BusinessJourneyCommon.LocalizedString
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails {
+  public struct UIDataMapper {
+    public var list: BusinessContactsManagerJourney.AccountDetails.UIDataMapper.List
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails.UIDataMapper {
+  public struct List {
+    public var item: BusinessContactsManagerJourney.AccountDetails.UIDataMapper.List.Item
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails.UIDataMapper.List {
+  public struct Item {
+    public var infoItems: (_ account: BusinessContactsManagerJourney.Contact.AccountInformation) -> [BusinessContactsManagerJourney.AccountDetails.ViewData.AccountDetailsField]
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails {
+  public enum ViewData {
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails.ViewData {
+  public enum AccountDetailsField {
+    case address(data: BusinessContactsManagerJourney.AccountDetails.ViewData.Address)
+    case text(data: BusinessContactsManagerJourney.AccountDetails.ViewData.Summary)
+    case country(data: BusinessContactsManagerJourney.AccountDetails.ViewData.Country)
+  }
+  public struct Address {
+    public init(title: Swift.String, address: Swift.String, accessibilityLabel: Swift.String? = nil)
+  }
+  public struct Summary {
+    public init(title: Swift.String, subTitle: Swift.String, accessibilityLabel: Swift.String? = nil)
+  }
+  public struct Country {
+    public init(title: Swift.String, isoCode: Swift.String, accessibilityLabel: Swift.String? = nil)
+  }
+}
+extension BusinessContactsManagerJourney.AccountDetails.ViewData.AccountDetailsField : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.AccountDetails.ViewData.AccountDetailsField, b: BusinessContactsManagerJourney.AccountDetails.ViewData.AccountDetailsField) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.AccountDetails.ViewData.Address : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.AccountDetails.ViewData.Address, b: BusinessContactsManagerJourney.AccountDetails.ViewData.Address) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.AccountDetails.ViewData.Summary : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.AccountDetails.ViewData.Summary, b: BusinessContactsManagerJourney.AccountDetails.ViewData.Summary) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.AccountDetails.ViewData.Country : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.AccountDetails.ViewData.Country, b: BusinessContactsManagerJourney.AccountDetails.ViewData.Country) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.Contact {
+  public struct AccountInformation : Swift.Codable, Swift.Equatable {
+    public var name: Swift.String?
+    public var alias: Swift.String?
+    public var accountNumber: Swift.String?
+    public var IBAN: Swift.String?
+    public var phoneNumber: Swift.String?
+    public var email: Swift.String?
+    public var BIC: Swift.String?
+    public var bankCode: Swift.String?
+    public var bankName: Swift.String?
+    public var bankAddressLine1: Swift.String?
+    public var bankAddressLine2: Swift.String?
+    public var bankStreetName: Swift.String?
+    public var bankTown: Swift.String?
+    public var bankPostCode: Swift.String?
+    public var bankCountrySubDivision: Swift.String?
+    public var bankCountry: Swift.String?
+    public var accountHolderAddressLine1: Swift.String?
+    public var accountHolderAddressLine2: Swift.String?
+    public var accountHolderStreetName: Swift.String?
+    public var accountHolderTown: Swift.String?
+    public var accountHolderPostCode: Swift.String?
+    public var accountHolderCountrySubDivision: Swift.String?
+    public var accountHolderCountry: Swift.String?
+    public var additions: [Swift.String : Swift.String]?
+    public init(name: Swift.String? = nil, alias: Swift.String? = nil, accountNumber: Swift.String? = nil, IBAN: Swift.String? = nil, phoneNumber: Swift.String? = nil, email: Swift.String? = nil, BIC: Swift.String? = nil, bankCode: Swift.String? = nil, bankName: Swift.String? = nil, bankAddressLine1: Swift.String? = nil, bankAddressLine2: Swift.String? = nil, bankStreetName: Swift.String? = nil, bankTown: Swift.String? = nil, bankPostCode: Swift.String? = nil, bankCountrySubDivision: Swift.String? = nil, bankCountry: Swift.String? = nil, accountHolderAddressLine1: Swift.String? = nil, accountHolderAddressLine2: Swift.String? = nil, accountHolderStreetName: Swift.String? = nil, accountHolderTown: Swift.String? = nil, accountHolderPostCode: Swift.String? = nil, accountHolderCountrySubDivision: Swift.String? = nil, accountHolderCountry: Swift.String? = nil, additions: [Swift.String : Swift.String]? = nil)
+    public static func == (a: BusinessContactsManagerJourney.Contact.AccountInformation, b: BusinessContactsManagerJourney.Contact.AccountInformation) -> Swift.Bool
+    public func encode(to encoder: Swift.Encoder) throws
+    public init(from decoder: Swift.Decoder) throws
+  }
+}
+extension BusinessContactsManagerJourney.AddContact {
+  public struct Conditions {
+    public var contactName: BusinessContactsManagerJourney.Form.Condition {
+      mutating get
+      set
+    }
+    public var accountName: BusinessContactsManagerJourney.Form.Condition {
+      mutating get
+      set
+    }
+    public var accountNumberOrIban: BusinessContactsManagerJourney.Form.Condition {
+      mutating get
+      set
+    }
+    public var bankBranchCode: BusinessContactsManagerJourney.Form.Condition {
+      mutating get
+      set
+    }
+  }
+}
+extension BusinessContactsManagerJourney.AddContact {
+  public struct Configuration {
+    public init()
+    public var form: BusinessContactsManagerJourney.Form {
+      mutating get
+      set
+    }
+    public var strings: BusinessContactsManagerJourney.AddContact.Strings
+    public var conditions: BusinessContactsManagerJourney.AddContact.Conditions
+    public var validations: BusinessContactsManagerJourney.AddContact.Validations
+    public var uiDataMapper: BusinessContactsManagerJourney.AddContact.UIDataMapper
+    public var analyticsLabel: Swift.String?
+  }
+}
+extension BusinessContactsManagerJourney.AddContact {
+  public struct Strings {
+    public init()
+    public var title: BusinessJourneyCommon.LocalizedString
+    public var optionalFieldSuffix: BusinessJourneyCommon.LocalizedString
+    public var requiredFieldSuffix: BusinessJourneyCommon.LocalizedString
+    public var cancelButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoSectionTitle: BusinessJourneyCommon.LocalizedString
+    public var contactNameFieldTitle: BusinessJourneyCommon.LocalizedString
+    public var contactNameValidationErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var accountInfoSectionTitle: BusinessJourneyCommon.LocalizedString
+    public var accountNameFieldTitle: BusinessJourneyCommon.LocalizedString
+    public var accountNameValidationErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var accountNumberOrIbanFieldTitle: BusinessJourneyCommon.LocalizedString
+    public var accountNumberOrIbanValidationErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var bankBranchCodeFieldTitle: BusinessJourneyCommon.LocalizedString
+    public var bankBranchCodeValidationErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var submitButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var cancelAlertTitle: BusinessJourneyCommon.LocalizedString
+    public var cancelAlertMessage: BusinessJourneyCommon.LocalizedString
+    public var cancelAlertFirstButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var cancelAlertSecondButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetAlertTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetAlertMessage: BusinessJourneyCommon.LocalizedString
+    public var dimissAlertFirstButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetAlertSecondButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var confirmationResultPrimaryButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var confirmationResultSecondryButtonTitle: BusinessJourneyCommon.LocalizedString
+    public var confirmationResultSuccessTitle: BusinessJourneyCommon.LocalizedString
+    public var contactSuccessApprovalRequiredTitle: BusinessJourneyCommon.LocalizedString
+    public var contactSuccessApprovalRequiredMessage: BusinessJourneyCommon.LocalizedString
+    public var alertDialogFailureTitle: BusinessJourneyCommon.LocalizedString
+    public var alertDialogFailureMessage: BusinessJourneyCommon.LocalizedString
+  }
+}
+extension BusinessContactsManagerJourney.AddContact {
+  public struct Validations {
+    public var contactName: BusinessContactsManagerJourney.Form.Validation {
+      mutating get
+      set
+    }
+    public var accountName: BusinessContactsManagerJourney.Form.Validation {
+      mutating get
+      set
+    }
+    public var accountNumberOrIban: BusinessContactsManagerJourney.Form.Validation {
+      mutating get
+      set
+    }
+    public var bankBranchCode: BusinessContactsManagerJourney.Form.Validation {
+      mutating get
+      set
+    }
+  }
+}
+public enum AddContact {
+}
+extension BusinessContactsManagerJourney.AddContact {
+  public static func build() -> UIKit.UIViewController
+}
+extension BusinessContactsManagerJourney.AddContact {
+  public struct UIDataMapper {
+    public init()
+    public var resultView: BusinessContactsManagerJourney.AddContact.UIDataMapper.ResultView
+  }
+}
+extension BusinessContactsManagerJourney.AddContact.UIDataMapper {
+  public struct ResultView {
+    public var iconName: (BusinessContactsManagerJourney.ContactsManager.Response.PostContactsResponse) -> Swift.String?
+    public var title: (_ postContactsResponse: BusinessContactsManagerJourney.ContactsManager.Response.PostContactsResponse) -> Swift.String?
+    public var message: (_ postContactsResponse: BusinessContactsManagerJourney.ContactsManager.Response.PostContactsResponse) -> Swift.String?
+    public var alertDialogTitle: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String?
+    public var alertDialogMessage: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String?
+  }
+}
+extension Foundation.Bundle {
+  public static var contactsManager: Foundation.Bundle {
+    get
+  }
+}
+public struct Contact : Swift.Codable, Swift.Equatable {
+  public var id: Swift.String
+  public var accounts: [BusinessContactsManagerJourney.Contact.AccountInformation]
+  public var accessContextScope: BusinessContactsManagerJourney.Contact.AccessContextScope?
+  public var name: Swift.String
+  public var alias: Swift.String?
+  public var category: Swift.String?
+  public var contactPerson: Swift.String?
+  public var phoneNumber: Swift.String?
+  public var emailId: Swift.String?
+  public var addressLine1: Swift.String?
+  public var addressLine2: Swift.String?
+  public var streetName: Swift.String?
+  public var town: Swift.String?
+  public var postCode: Swift.String?
+  public var countrySubDivision: Swift.String?
+  public var country: Swift.String?
+  public var activeStatus: BusinessContactsManagerJourney.Contact.ActiveContactStatus?
+  public var additions: [Swift.String : Swift.String]?
+  public init(id: Swift.String, accounts: [BusinessContactsManagerJourney.Contact.AccountInformation], accessContextScope: BusinessContactsManagerJourney.Contact.AccessContextScope? = nil, name: Swift.String, alias: Swift.String? = nil, category: Swift.String? = nil, contactPerson: Swift.String? = nil, phoneNumber: Swift.String? = nil, emailId: Swift.String? = nil, addressLine1: Swift.String? = nil, addressLine2: Swift.String? = nil, streetName: Swift.String? = nil, town: Swift.String? = nil, postCode: Swift.String? = nil, countrySubDivision: Swift.String? = nil, country: Swift.String? = nil, activeStatus: BusinessContactsManagerJourney.Contact.ActiveContactStatus? = nil, additions: [Swift.String : Swift.String]? = nil)
+  public static func == (a: BusinessContactsManagerJourney.Contact, b: BusinessContactsManagerJourney.Contact) -> Swift.Bool
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension BusinessContactsManagerJourney.Contact {
+  public enum AccessContextScope : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case sa
+    case le
+    case user
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [BusinessContactsManagerJourney.Contact.AccessContextScope]
+    public typealias RawValue = Swift.String
+    public static var allCases: [BusinessContactsManagerJourney.Contact.AccessContextScope] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum ActiveContactStatus : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case active
+    case pendingApproval
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [BusinessContactsManagerJourney.Contact.ActiveContactStatus]
+    public typealias RawValue = Swift.String
+    public static var allCases: [BusinessContactsManagerJourney.Contact.ActiveContactStatus] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum ApprovalRequestIndicator : Swift.String, Swift.Codable, Swift.CaseIterable {
+    case approvalRequired
+    case requestAccepted
+    public init?(rawValue: Swift.String)
+    public typealias AllCases = [BusinessContactsManagerJourney.Contact.ApprovalRequestIndicator]
+    public typealias RawValue = Swift.String
+    public static var allCases: [BusinessContactsManagerJourney.Contact.ApprovalRequestIndicator] {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails {
+  public struct Configuration {
+    public init()
+    public var strings: BusinessContactsManagerJourney.ContactDetails.Strings
+    public var analytics: BusinessContactsManagerJourney.ContactDetails.Analytics
+    public var uiDataMapper: BusinessContactsManagerJourney.ContactDetails.UIDataMapper
+    public var images: BusinessContactsManagerJourney.ContactDetails.Images
+  }
+}
+public enum ContactDetails {
+}
+extension BusinessContactsManagerJourney.ContactDetails {
+  public static func build(with contact: BusinessContactsManagerJourney.Contact) -> UIKit.UIViewController
+}
+extension BusinessContactsManagerJourney.ContactDetails {
+  public struct Analytics {
+    public init()
+    public var screenLabel: Swift.String?
+    public var contactInfoTabLabel: Swift.String?
+    public var accountsListTabLabel: Swift.String?
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails {
+  public struct Images {
+    public init()
+    public var icAddress: UIKit.UIImage?
+    public var accountListField: BusinessContactsManagerJourney.ContactDetails.Images.AccountListField
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails.Images {
+  public struct AccountListField {
+    public init()
+    public var icon: UIKit.UIImage?
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails {
+  public struct Strings {
+    public init()
+    public var title: BusinessJourneyCommon.LocalizedString
+    public var accountsTemplate: BusinessJourneyCommon.LocalizedString
+    public var contactInfoTabTitle: BusinessJourneyCommon.LocalizedString
+    public var pendingApprovalWarningTitle: BusinessJourneyCommon.LocalizedString
+    public var pendingApprovalWarningMessage: BusinessJourneyCommon.LocalizedString
+    public var contactInfoCountryTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoNameTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAliasTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAddressTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAccountNumberTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAccountNameTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAccountAliasTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAccountSwiftCodeTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAccountIBANTitle: BusinessJourneyCommon.LocalizedString
+    public var contactInfoAccountBBANTitle: BusinessJourneyCommon.LocalizedString
+    public var phoneNumberTitle: BusinessJourneyCommon.LocalizedString
+    public var bankNameTitle: BusinessJourneyCommon.LocalizedString
+    public var bankAddressTitle: BusinessJourneyCommon.LocalizedString
+    public var bankCodeTitle: BusinessJourneyCommon.LocalizedString
+    public var bankCodeRoutingNumberCATitle: BusinessJourneyCommon.LocalizedString
+    public var bankCodeRoutingNumberUSTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorButton: BusinessJourneyCommon.LocalizedString
+    public var contactDetailsErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var contactDetailsErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var contactDetailsErrorButton: BusinessJourneyCommon.LocalizedString
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails {
+  public struct UIDataMapper {
+    public var header: BusinessContactsManagerJourney.ContactDetails.UIDataMapper.Header
+    public var contactInfo: BusinessContactsManagerJourney.ContactDetails.UIDataMapper.ContactInfo
+    public var accounts: BusinessContactsManagerJourney.ContactDetails.UIDataMapper.AccountsList
+    public var errorUIDataMapper: BusinessContactsManagerJourney.ContactDetails.UIDataMapper.ErrorUIDataMapper
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails.UIDataMapper {
+  public struct Header {
+    public init()
+    public var avatar: (_ contact: BusinessContactsManagerJourney.Contact) -> BusinessContactsManagerJourney.ContactDetails.ViewData.ContactImage?
+    public var headline: (_ contact: BusinessContactsManagerJourney.Contact) -> Swift.String?
+  }
+  public struct AccountsList {
+  }
+  public struct ContactInfo {
+    public init()
+    public var contactInfoItems: (_ contact: BusinessContactsManagerJourney.Contact) -> [BusinessContactsManagerJourney.ContactDetails.ViewData.ContactDetailsField]
+  }
+  public struct ErrorUIDataMapper {
+    public var iconName: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String
+    public var title: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String
+    public var message: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String
+    public var primaryButtonText: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String?
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails {
+  public enum ViewData {
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails.ViewData {
+  public enum ContactImage : Swift.Equatable {
+    case image(UIKit.UIImage)
+    case imageUrl(Foundation.URL)
+    case initials(Swift.String)
+    public static func == (a: BusinessContactsManagerJourney.ContactDetails.ViewData.ContactImage, b: BusinessContactsManagerJourney.ContactDetails.ViewData.ContactImage) -> Swift.Bool
+  }
+  public enum ContactDetailsField {
+    case address(data: BusinessContactsManagerJourney.ContactDetails.ViewData.Address)
+    case text(data: BusinessContactsManagerJourney.ContactDetails.ViewData.Summary)
+    case country(data: BusinessContactsManagerJourney.ContactDetails.ViewData.Country)
+  }
+  public struct Address {
+    public init(title: Swift.String, address: Swift.String, accessibilityLabel: Swift.String? = nil)
+  }
+  public struct Summary {
+    public init(title: Swift.String, subTitle: Swift.String, accessibilityLabel: Swift.String? = nil)
+  }
+  public struct Country {
+    public init(title: Swift.String, isoCode: Swift.String, accessibilityLabel: Swift.String? = nil)
+  }
+}
+extension BusinessContactsManagerJourney.ContactDetails.ViewData.ContactDetailsField : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.ContactDetails.ViewData.ContactDetailsField, b: BusinessContactsManagerJourney.ContactDetails.ViewData.ContactDetailsField) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.ContactDetails.ViewData.Address : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.ContactDetails.ViewData.Address, b: BusinessContactsManagerJourney.ContactDetails.ViewData.Address) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.ContactDetails.ViewData.Summary : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.ContactDetails.ViewData.Summary, b: BusinessContactsManagerJourney.ContactDetails.ViewData.Summary) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.ContactDetails.ViewData.Country : Swift.Equatable {
+  public static func == (a: BusinessContactsManagerJourney.ContactDetails.ViewData.Country, b: BusinessContactsManagerJourney.ContactDetails.ViewData.Country) -> Swift.Bool
+}
+extension BusinessContactsManagerJourney.ContactsList {
+  public struct Configuration {
+    public init()
+    public var design: BusinessContactsManagerJourney.ContactsList.Design
+    public var strings: BusinessContactsManagerJourney.ContactsList.Strings
+    public var uiDataMapper: BusinessContactsManagerJourney.ContactsList.UIDataMapper
+  }
+}
+public enum ContactsList {
+}
+extension BusinessContactsManagerJourney.ContactsList {
+  public static func build(with navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+extension BusinessContactsManagerJourney.ContactsList {
+  public struct Design {
+    public init()
+    public var tableStyle: BackbaseDesignSystem.Style<UIKit.UITableView> {
+      mutating get
+      set
+    }
+    public var navigationBar: BackbaseDesignSystem.Style<UIKit.UINavigationBar> {
+      mutating get
+      set
+    }
+    public var navigationItem: BackbaseDesignSystem.Style<UIKit.UINavigationItem> {
+      mutating get
+      set
+    }
+    public var listLoadingIndicator: BackbaseDesignSystem.Style<UIKit.UIActivityIndicatorView> {
+      mutating get
+      set
+    }
+    public var paginationIndicator: (_ indicator: UIKit.UIActivityIndicatorView) -> Swift.Void
+    public var listContactName: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var listContactAvatar: BackbaseDesignSystem.Style<BackbaseDesignSystem.Avatar> {
+      mutating get
+      set
+    }
+    public var listStatusBadge: (_ badgeLabel: BackbaseDesignSystem.Badge) -> Swift.Void
+    public var listAccountNumber: BackbaseDesignSystem.Style<UIKit.UILabel> {
+      mutating get
+      set
+    }
+    public var listItemBackground: (_ listItem: UIKit.UIView) -> Swift.Void
+  }
+}
+extension BusinessContactsManagerJourney.ContactsList {
+  public struct Strings {
+    public init()
+    public var title: BusinessJourneyCommon.LocalizedString
+    public var statusPendingApproval: BusinessJourneyCommon.LocalizedString
+    public var emptyStateErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var emptyStateErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var emptyStateButton: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var noInternetErrorButton: BusinessJourneyCommon.LocalizedString
+    public var contactsErrorTitle: BusinessJourneyCommon.LocalizedString
+    public var contactsErrorMessage: BusinessJourneyCommon.LocalizedString
+    public var contactsErrorButton: BusinessJourneyCommon.LocalizedString
+    public var accountsTemplate: BusinessJourneyCommon.LocalizedString
+  }
+}
+extension BusinessContactsManagerJourney.ContactsList {
+  public struct UIDataMapper {
+    public var list: BusinessContactsManagerJourney.ContactsList.UIDataMapper.List
+  }
+}
+extension BusinessContactsManagerJourney.ContactsList.UIDataMapper {
+  public struct List {
+    public var errorUIDataMapper: BusinessContactsManagerJourney.ContactsList.UIDataMapper.List.ErrorUIDataMapper
+  }
+}
+extension BusinessContactsManagerJourney.ContactsList.UIDataMapper.List {
+  public struct ErrorUIDataMapper {
+    public var iconName: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String
+    public var title: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String
+    public var message: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String
+    public var primaryButtonText: (_ error: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.String?
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager {
+  public struct Configuration {
+    public init()
+    public var contactsList: BusinessContactsManagerJourney.ContactsList.Configuration
+    public var contactDetails: BusinessContactsManagerJourney.ContactDetails.Configuration
+    public var accountDetails: BusinessContactsManagerJourney.AccountDetails.Configuration
+    public var addContact: BusinessContactsManagerJourney.AddContact.Configuration
+    public var countryFlagHandler: (Swift.String) -> UIKit.UIImage?
+    public var countryNameHandler: (Swift.String) -> Swift.String?
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager {
+  public enum Error : Swift.Error {
+    case empty
+    case notConnected
+    case loadingFailed
+    case noPrivilege
+    case serverError(Swift.Error)
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager.Error : Swift.Equatable {
+  public static func == (lhs: BusinessContactsManagerJourney.ContactsManager.Error, rhs: BusinessContactsManagerJourney.ContactsManager.Error) -> Swift.Bool
+}
+public enum ContactsManager {
+  public static func build(with navigationController: UIKit.UINavigationController) -> UIKit.UIViewController
+}
+public protocol ContactsManagerUseCase {
+  typealias ContactsResponse<T> = (Swift.Result<T, BusinessContactsManagerJourney.ContactsManager.Error>) -> Swift.Void
+  typealias GetContactsResponse = Self.ContactsResponse<[BusinessContactsManagerJourney.Contact]>
+  typealias GetContactResponse = Self.ContactsResponse<BusinessContactsManagerJourney.Contact>
+  typealias PostContactsResult = Self.ContactsResponse<BusinessContactsManagerJourney.ContactsManager.Response.PostContactsResponse>
+  typealias PutContactResult = Self.ContactsResponse<BusinessContactsManagerJourney.ContactsManager.Response.PutContactResponse>
+  func getContacts(_ request: BusinessContactsManagerJourney.ContactsManager.Request.GetContactsRequest, completion: @escaping Self.GetContactsResponse)
+  func getContact(_ request: BusinessContactsManagerJourney.ContactsManager.Request.GetContactRequest, completion: @escaping Self.GetContactResponse)
+  func postContacts(_ request: BusinessContactsManagerJourney.ContactsManager.Request.PostContactsRequest, completion: @escaping Self.PostContactsResult)
+  func putContact(contactId: Swift.String, request: BusinessContactsManagerJourney.ContactsManager.Request.PutContactRequest, completion: @escaping Self.PutContactResult)
+}
+public struct Form {
+  public enum Component {
+    case onModalSwipeDown(_: BusinessContactsManagerJourney.ViewControllerCompletion)
+    case title(_: Swift.String)
+    case leftBarButton(configuration: BusinessContactsManagerJourney.Form.BarButtonConfiguration)
+    case rightBarButton(configuration: BusinessContactsManagerJourney.Form.BarButtonConfiguration)
+    case header(BusinessContactsManagerJourney.Form.HeaderType)
+    case section(_: [BusinessContactsManagerJourney.Form.Component])
+    case label(configuration: BusinessContactsManagerJourney.Form.LabelConfiguration)
+    case input(configuration: BusinessContactsManagerJourney.Form.InputConfiguration)
+    case footer(BusinessContactsManagerJourney.Form.FooterType)
+  }
+  public struct LabelConfiguration {
+    public init(title: Swift.String, accessibilityLabel: Swift.String? = nil)
+  }
+  public struct BarButtonConfiguration {
+    public init(title: Swift.String?, accessibilityLabel: Swift.String? = nil, image: UIKit.UIImage?, action: BusinessContactsManagerJourney.ViewControllerCompletion?)
+  }
+  public struct ButtonConfiguration {
+    public init(title: Swift.String, accessibilityLabel: Swift.String? = nil, image: UIKit.UIImage?, alignment: UIKit.UIControl.ContentHorizontalAlignment, destructive: Swift.Bool, action: BusinessContactsManagerJourney.ViewControllerCompletion?)
+  }
+  public struct SelectorConfiguration {
+    public init(title: Swift.String, placeholder: Swift.String, action: BusinessContactsManagerJourney.ViewControllerCompletion?)
+  }
+  public struct InputConfiguration {
+    public init(id: Swift.String, title: Swift.String, accessibilityLabel: Swift.String? = nil, condition: BusinessContactsManagerJourney.Form.Condition, validation: BusinessContactsManagerJourney.Form.Validation)
+  }
+  public struct CustomViewConfiguration {
+    public init(view: UIKit.UIView, action: BusinessContactsManagerJourney.ViewControllerCompletion?)
+  }
+  public enum HeaderType {
+    case avatar(boundTo: Swift.String? = nil)
+  }
+  public enum FooterType {
+    case button(configuration: BusinessContactsManagerJourney.Form.FooterButtonConfiguration)
+  }
+  public struct FooterButtonConfiguration {
+    public init(title: Swift.String, accessibilityLabel: Swift.String? = nil, onSubmit: BusinessContactsManagerJourney.ViewControllerAndResultsCompletion?)
+  }
+  public enum Condition {
+    case optional(message: Swift.String)
+    case required(message: Swift.String)
+  }
+  public enum Validation {
+    case none
+    case regex(_: Swift.String, message: Swift.String)
+    case function(_: ((Swift.String) -> Swift.Bool), message: Swift.String)
+  }
+  public init(_ components: BusinessContactsManagerJourney.Form.Component...)
+}
+extension BusinessContactsManagerJourney.ContactsManager.Request {
+  public struct GetContactRequest {
+    public init(contactId: Swift.String)
+    public let contactId: Swift.String
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager {
+  public enum Request {
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager.Request {
+  public struct GetContactsRequest {
+    public init(from: Swift.Int? = nil, size: Swift.Int? = nil, query: Swift.String? = nil, accountIdentifierTypes: [BusinessContactsManagerJourney.ContactsManager.Request.GetContactsRequest.AccountIdentifierType]? = nil, targetSaId: Swift.String? = nil)
+    public let from: Swift.Int?
+    public let size: Swift.Int?
+    public let query: Swift.String?
+    public let accountIdentifierTypes: [BusinessContactsManagerJourney.ContactsManager.Request.GetContactsRequest.AccountIdentifierType]?
+    public let targetSaId: Swift.String?
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager.Request.GetContactsRequest {
+  public enum AccountIdentifierType : Swift.String {
+    case iban
+    case accountNumber
+    case phoneNumber
+    case email
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager.Request {
+  public struct PostContactsRequest {
+    public init(approved: Swift.Bool?, accessContext: BusinessContactsManagerJourney.Contact.AccessContext?, accounts: [BusinessContactsManagerJourney.Contact.AccountInformation], accessContextScope: BusinessContactsManagerJourney.Contact.AccessContextScope?, name: Swift.String, alias: Swift.String?, category: Swift.String?, contactPerson: Swift.String?, phoneNumber: Swift.String?, emailId: Swift.String?, addressLine1: Swift.String?, addressLine2: Swift.String?, streetName: Swift.String?, town: Swift.String?, postCode: Swift.String?, countrySubDivision: Swift.String?, country: Swift.String?, activeStatus: BusinessContactsManagerJourney.Contact.ActiveContactStatus?, additions: [Swift.String : Swift.String]?)
+    public let approved: Swift.Bool?
+    public let accessContext: BusinessContactsManagerJourney.Contact.AccessContext?
+    public let accounts: [BusinessContactsManagerJourney.Contact.AccountInformation]
+    public let accessContextScope: BusinessContactsManagerJourney.Contact.AccessContextScope?
+    public let name: Swift.String
+    public let alias: Swift.String?
+    public let category: Swift.String?
+    public let contactPerson: Swift.String?
+    public let phoneNumber: Swift.String?
+    public let emailId: Swift.String?
+    public let addressLine1: Swift.String?
+    public let addressLine2: Swift.String?
+    public let streetName: Swift.String?
+    public let town: Swift.String?
+    public let postCode: Swift.String?
+    public let countrySubDivision: Swift.String?
+    public let country: Swift.String?
+    public let activeStatus: BusinessContactsManagerJourney.Contact.ActiveContactStatus?
+    public var additions: [Swift.String : Swift.String]?
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager {
+  public enum Response {
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager.Response {
+  public struct PostContactsResponse {
+    public init(id: Swift.String, status: BusinessContactsManagerJourney.Contact.ActiveContactStatus? = nil)
+    public let id: Swift.String
+    public let status: BusinessContactsManagerJourney.Contact.ActiveContactStatus?
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager.Request {
+  public struct PutContactRequest {
+    public init(approved: Swift.Bool?, accounts: [BusinessContactsManagerJourney.Contact.AccountInformation], accessContextScope: BusinessContactsManagerJourney.Contact.AccessContextScope?, name: Swift.String, alias: Swift.String?, category: Swift.String?, contactPerson: Swift.String?, phoneNumber: Swift.String?, emailId: Swift.String?, addressLine1: Swift.String?, addressLine2: Swift.String?, streetName: Swift.String?, town: Swift.String?, postCode: Swift.String?, countrySubDivision: Swift.String?, country: Swift.String?, activeStatus: BusinessContactsManagerJourney.Contact.ActiveContactStatus?, additions: [Swift.String : Swift.String]?)
+    public let approved: Swift.Bool?
+    public let accounts: [BusinessContactsManagerJourney.Contact.AccountInformation]
+    public let accessContextScope: BusinessContactsManagerJourney.Contact.AccessContextScope?
+    public let name: Swift.String
+    public let alias: Swift.String?
+    public let category: Swift.String?
+    public let contactPerson: Swift.String?
+    public let phoneNumber: Swift.String?
+    public let emailId: Swift.String?
+    public let addressLine1: Swift.String?
+    public let addressLine2: Swift.String?
+    public let streetName: Swift.String?
+    public let town: Swift.String?
+    public let postCode: Swift.String?
+    public let countrySubDivision: Swift.String?
+    public let country: Swift.String?
+    public let activeStatus: BusinessContactsManagerJourney.Contact.ActiveContactStatus?
+    public var additions: [Swift.String : Swift.String]?
+  }
+}
+extension BusinessContactsManagerJourney.ContactsManager.Response {
+  public struct PutContactResponse {
+    public init(status: BusinessContactsManagerJourney.Contact.ApprovalRequestIndicator)
+    public let status: BusinessContactsManagerJourney.Contact.ApprovalRequestIndicator
+  }
+}
+public typealias ViewControllerCompletion = ((UIKit.UIViewController?) -> Swift.Void)
+public typealias ViewControllerAndResultsCompletion = ((UIKit.UIViewController?, [Swift.String : Swift.String], Swift.Bool) -> Swift.Void)
+extension BusinessContactsManagerJourney.Contact.AccessContextScope : Swift.Equatable {}
+extension BusinessContactsManagerJourney.Contact.AccessContextScope : Swift.Hashable {}
+extension BusinessContactsManagerJourney.Contact.AccessContextScope : Swift.RawRepresentable {}
+extension BusinessContactsManagerJourney.Contact.ActiveContactStatus : Swift.Equatable {}
+extension BusinessContactsManagerJourney.Contact.ActiveContactStatus : Swift.Hashable {}
+extension BusinessContactsManagerJourney.Contact.ActiveContactStatus : Swift.RawRepresentable {}
+extension BusinessContactsManagerJourney.Contact.ApprovalRequestIndicator : Swift.Equatable {}
+extension BusinessContactsManagerJourney.Contact.ApprovalRequestIndicator : Swift.Hashable {}
+extension BusinessContactsManagerJourney.Contact.ApprovalRequestIndicator : Swift.RawRepresentable {}
+extension BusinessContactsManagerJourney.ContactsManager.Request.GetContactsRequest.AccountIdentifierType : Swift.Equatable {}
+extension BusinessContactsManagerJourney.ContactsManager.Request.GetContactsRequest.AccountIdentifierType : Swift.Hashable {}
+extension BusinessContactsManagerJourney.ContactsManager.Request.GetContactsRequest.AccountIdentifierType : Swift.RawRepresentable {}

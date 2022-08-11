@@ -1,0 +1,48 @@
+{
+  "name": "BusinessContactsManagerJourneyExtended",
+  "version": "2.1.1",
+  "summary": "BusinessContactsManagerJourneyExtended",
+  "description": "BusinessContactsManagerJourneyExtended",
+  "license": "Backbase License",
+  "homepage": "http://www.backbase.com/home",
+  "authors": "Backbase USA",
+  "platforms": {
+    "ios": "14.0"
+  },
+  "source": {
+    "git": "ssh://git@stash.backbase.com:7999/bus/business-contacts-manager-journey-ios.git"
+  },
+  "source_files": "BusinessContactsManagerJourneyExtended/Sources/**/*",
+  "dependencies": {
+    "BusinessContactsManagerJourney": [
+      "~> 2.1.1"
+    ],
+    "BusinessDesign": [
+      ">= 2.0"
+    ],
+    "BackbaseObservability": [
+      ">= 1.0"
+    ],
+    "Resolver": [
+      ">= 1.2.1"
+    ],
+    "RxSwift": [
+      "~> 5"
+    ],
+    "RxCocoa": [
+      "~> 5"
+    ],
+    "SwiftLint": [
+
+    ],
+    "ContactsClient2": [
+      "1.4.1"
+    ],
+    "SDWebImage": [
+      "~> 5.12"
+    ],
+    "Shimmer": [
+      "1.0.2"
+    ]
+  }
+}

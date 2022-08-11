@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_BusinessContactsManagerJourneyExtended_Tests : NSObject
+@end
+@implementation PodsDummy_Pods_BusinessContactsManagerJourneyExtended_Tests
+@end

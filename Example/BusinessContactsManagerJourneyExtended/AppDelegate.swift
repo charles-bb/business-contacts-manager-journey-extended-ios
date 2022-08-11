@@ -2,11 +2,32 @@
 //  AppDelegate.swift
 //  BusinessContactsManagerJourneyExtended
 //
-//  Created by charles-bb on 08/09/2022.
-//  Copyright (c) 2022 charles-bb. All rights reserved.
+//  Copyright (c) 2022 Backbase USA Inc. All rights reserved.
 //
 
+import BusinessContactsManagerJourney
 import UIKit
+
+extension UIBarButtonItem {
+    private struct AssociatedObject {
+        static var key = "action_closure_key"
+    }
+
+    var actionClosure: (()->Void)? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedObject.key) as? ()->Void
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedObject.key, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            target = self
+            action = #selector(didTapButton(sender:))
+        }
+    }
+
+    @objc func didTapButton(sender: Any) {
+        actionClosure?()
+    }
+}
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +35,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        // -- main app window
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        let navigationController = UINavigationController()
+        let viewController = ContactsList.build(with: navigationController)
+        navigationController.viewControllers = [viewController]
+
+        // ensure the right bar button item exists by loading the view
+        _ = viewController.view
+
+        // remove the add contact button
+        navigationController.navigationBar.items?.last?.rightBarButtonItem = nil
+
+        // intercept the didTap AddContact and replace it with custom functionality
+        if let addContact = navigationController.navigationBar.items?.last?.rightBarButtonItem {
+            addContact.target = nil
+            addContact.actionClosure = {
+                let addContact = AddContact.build()
+                navigationController.present(addContact, animated: true)
+            }
+        }
+
+
+        window?.rootViewController = navigationController
+
+        // -- main controller
+        window!.makeKeyAndVisible()
         return true
     }
 

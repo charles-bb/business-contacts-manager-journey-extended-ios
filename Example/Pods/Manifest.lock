@@ -1,0 +1,183 @@
+PODS:
+  - AccessControlClient2 (1.1.0):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - AppAuth (1.5.0):
+    - AppAuth/Core (= 1.5.0)
+    - AppAuth/ExternalUserAgent (= 1.5.0)
+  - AppAuth/Core (1.5.0)
+  - AppAuth/ExternalUserAgent (1.5.0):
+    - AppAuth/Core
+  - Backbase (9.0.4)
+  - BackbaseDesignSystem (2.5.0)
+  - BackbaseIdentity (4.1.0):
+    - AppAuth (~> 1.3)
+    - Backbase (>= 9.0.0)
+  - BackbaseObservability (1.0.0):
+    - BackbaseObservability/Sources (= 1.0.0)
+  - BackbaseObservability/Sources (1.0.0)
+  - BusinessContactsManagerJourney (2.1.1):
+    - BusinessContactsManagerJourney/Sources (= 2.1.1)
+    - BusinessJourneyCommon (~> 2.0)
+    - RxSwift (~> 5)
+    - SDWebImage (~> 5.12)
+  - BusinessContactsManagerJourney/Sources (2.1.1):
+    - BusinessJourneyCommon (~> 2.0)
+    - RxSwift (~> 5)
+    - SDWebImage (~> 5.12)
+  - BusinessContactsManagerJourneyExtended (2.1.1):
+    - BackbaseObservability (>= 1.0)
+    - BusinessContactsManagerJourney (~> 2.1.1)
+    - BusinessDesign (>= 2.0)
+    - ContactsClient2 (= 1.4.1)
+    - Resolver (>= 1.2.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+    - SDWebImage (~> 5.12)
+    - Shimmer (= 1.0.2)
+    - SwiftLint
+  - BusinessDesign (2.0.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - BusinessDesign/Sources (= 2.0.0)
+    - UIScrollView-InfiniteScroll (= 1.1.0)
+    - VGParallaxHeader (= 0.0.6)
+  - BusinessDesign/Sources (2.0.0):
+    - BackbaseDesignSystem (~> 2.0)
+    - UIScrollView-InfiniteScroll (= 1.1.0)
+    - VGParallaxHeader (= 0.0.6)
+  - BusinessJourneyCommon (2.0.0):
+    - Backbase (>= 7.9.0)
+    - BackbaseIdentity (>= 2.3.0)
+    - BusinessJourneyCommon/Sources (= 2.0.0)
+  - BusinessJourneyCommon/Sources (2.0.0):
+    - Backbase (>= 7.9.0)
+    - BackbaseIdentity (>= 2.3.0)
+  - BusinessWorkspacesJourney (3.0.0):
+    - BackbaseObservability (~> 1.0)
+    - BusinessDesign (~> 2.0)
+    - BusinessJourneyCommon (~> 2.0)
+    - BusinessWorkspacesJourney/Sources (= 3.0.0)
+    - Resolver (~> 1.2.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - BusinessWorkspacesJourney/Sources (3.0.0):
+    - BackbaseObservability (~> 1.0)
+    - BusinessDesign (~> 2.0)
+    - BusinessJourneyCommon (~> 2.0)
+    - Resolver (~> 1.2.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+  - BusinessWorkspacesJourneyWorkspacesUseCase2 (3.0.0):
+    - AccessControlClient2 (~> 1.1.0)
+    - BusinessWorkspacesJourney (~> 3.0.0)
+    - BusinessWorkspacesJourneyWorkspacesUseCase2/Sources (= 3.0.0)
+  - BusinessWorkspacesJourneyWorkspacesUseCase2/Sources (3.0.0):
+    - AccessControlClient2 (~> 1.1.0)
+    - BusinessWorkspacesJourney (~> 3.0.0)
+  - ClientCommon (1.1.5):
+    - Backbase (>= 7.8.0)
+  - ContactsClient2 (1.4.1):
+    - Backbase (>= 7.8.0)
+    - ClientCommon (~> 1.1)
+  - FlagKit (2.2)
+  - IdentityAuthenticationJourney (3.3.1):
+    - BackbaseDesignSystem (>= 2.0)
+    - BackbaseIdentity (>= 4.1.0)
+    - Resolver (~> 1.2.1)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
+    - SnapKit (~> 5)
+  - PureLayout (3.1.9)
+  - Resolver (1.2.1)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.3)
+  - SDWebImage (5.13.2):
+    - SDWebImage/Core (= 5.13.2)
+  - SDWebImage/Core (5.13.2)
+  - Shimmer (1.0.2)
+  - SnapKit (5.6.0)
+  - SwiftLint (0.48.0)
+  - UIScrollView-InfiniteScroll (1.1.0)
+  - VGParallaxHeader (0.0.6):
+    - PureLayout
+
+DEPENDENCIES:
+  - BackbaseIdentity
+  - BackbaseObservability (~> 1.0)
+  - BusinessContactsManagerJourneyExtended (from `../`)
+  - BusinessJourneyCommon (~> 2.0)
+  - BusinessWorkspacesJourney (= 3.0.0)
+  - BusinessWorkspacesJourneyWorkspacesUseCase2 (= 3.0.0)
+  - FlagKit
+  - IdentityAuthenticationJourney (~> 3.0)
+  - Resolver (~> 1.2.1)
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5)
+  - SwiftLint
+
+SPEC REPOS:
+  https://repo.backbase.com/api/pods/ios-business:
+    - BusinessContactsManagerJourney
+    - BusinessDesign
+    - BusinessJourneyCommon
+  https://repo.backbase.com/api/pods/ios-identity:
+    - IdentityAuthenticationJourney
+  https://repo.backbase.com/api/pods/ios-retail3:
+    - BackbaseDesignSystem
+  https://repo.backbase.com/api/pods/ios3:
+    - Backbase
+  trunk:
+    - AppAuth
+    - FlagKit
+    - PureLayout
+    - Resolver
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SDWebImage
+    - Shimmer
+    - SnapKit
+    - SwiftLint
+    - UIScrollView-InfiniteScroll
+    - VGParallaxHeader
+
+EXTERNAL SOURCES:
+  BusinessContactsManagerJourneyExtended:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AccessControlClient2: 9fb741b81ded6bcfb7cdac9c6f9c528a519fe840
+  AppAuth: 80317d99ac7ff2801a2f18ff86b48cd315ed465d
+  Backbase: 1d982e46876852f07bcaa6cb3c0a6d3f05d00f94
+  BackbaseDesignSystem: 2ef35dedc125af18c814d45ccbef54985fc94e6a
+  BackbaseIdentity: 6c2132d20727348264e1deaadefd6564744bdbc8
+  BackbaseObservability: 5881fd8f1d7ecf71799914a63a9785af4ce4cfb9
+  BusinessContactsManagerJourney: 770de7d87b0a4d5babba468fbbffe636a606da34
+  BusinessContactsManagerJourneyExtended: 615edbd3df6ac83516999532b02ee2e5cfaed4b5
+  BusinessDesign: 602a0a26d45a62060263cc1b309209b7eb413fde
+  BusinessJourneyCommon: 8e3713f6c484a5d50d3e5f3d957a56094509bcdc
+  BusinessWorkspacesJourney: 8d734623c0bbb916ce95d691811e27119e492c47
+  BusinessWorkspacesJourneyWorkspacesUseCase2: 3e965cbc6e7135b1f0206713d330ebf3902bbab6
+  ClientCommon: 3b305ed1d4c94dbe4955f53b2e3c102ec7892776
+  ContactsClient2: b9b110251c0bc5608fa0d2c14ed8c0cc83215493
+  FlagKit: eca7dc89064b0c986302ba9acefad1bf80a435b1
+  IdentityAuthenticationJourney: f1d853526a040f12f01351fc8b4652645557069d
+  PureLayout: 5fb5e5429519627d60d079ccb1eaa7265ce7cf88
+  Resolver: 764e380b2ddb26bba48c6e45ab393c968894a156
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
+  SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
+  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
+  SwiftLint: 284cea64b6187c5d6bd83e9a548a64104d546447
+  UIScrollView-InfiniteScroll: 3ef456bcbe759c19f510a383cff96e6647c98c98
+  VGParallaxHeader: 1213aba58c9b0aea84f9e81ad526fde57aa4fe48
+
+PODFILE CHECKSUM: 25940a866ba335c8b9dd5f69e5c6b854f48b8031
+
+COCOAPODS: 1.10.0

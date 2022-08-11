@@ -1,0 +1,24 @@
+{
+    "backbase": {
+        "serverURL": "https://app.stable.retail.backbasecloud.com",
+        "identity": {
+            "baseURL": "https://identity.stable.retail.backbasecloud.com",
+            "realm": "backbase",
+            "clientId": "mobile-client",
+            "applicationKey": "retail"
+        }
+    },
+    "security": {
+        "allowedDomains": [
+            "*"
+        ],
+        "sslPinning": {
+            "certificates": [],
+            "domainExceptions": [],
+            "checkChain": true
+        }
+    },
+    "development": {
+        "debugEnable": true
+    }
+}

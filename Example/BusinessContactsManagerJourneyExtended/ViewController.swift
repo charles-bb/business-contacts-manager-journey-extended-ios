@@ -2,16 +2,23 @@
 //  ViewController.swift
 //  BusinessContactsManagerJourneyExtended
 //
-//  Created by charles-bb on 08/09/2022.
-//  Copyright (c) 2022 charles-bb. All rights reserved.
+//  Copyright (c) 2022 Backbase USA Inc. All rights reserved.
 //
 
+import BusinessContactsManagerJourney
+import BusinessContactsManagerJourneyExtended
 import UIKit
 
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .red
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.isTranslucent = false
+        let viewController = ContactsList.build(with: navigationController)
+        navigationController.viewControllers = [viewController]
+
+        present(navigationController, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
     }
 

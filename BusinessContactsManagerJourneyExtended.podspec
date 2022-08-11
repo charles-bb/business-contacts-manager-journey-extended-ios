@@ -8,35 +8,35 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BusinessContactsManagerJourneyExtended'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of BusinessContactsManagerJourneyExtended.'
+  s.version          = '2.1.1'
+  s.summary          = 'BusinessContactsManagerJourneyExtended'
+  s.description      = s.summary
+  s.license          = 'Backbase License'
+  s.homepage         = 'http://www.backbase.com/home'
+  s.author           = 'Backbase USA'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.platform = :ios
+  s.ios.deployment_target = '14.0'
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.source           = { git: 'ssh://git@stash.backbase.com:7999/bus/business-contacts-manager-journey-ios.git' }
+  s.source_files     = 'BusinessContactsManagerJourneyExtended/Sources/**/*'
 
-  s.homepage         = 'https://github.com/charles-bb/BusinessContactsManagerJourneyExtended'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'charles-bb' => '_' }
-  s.source           = { :git => 'https://github.com/charles-bb/BusinessContactsManagerJourneyExtended.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
 
-  s.source_files = 'BusinessContactsManagerJourneyExtended/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'BusinessContactsManagerJourneyExtended' => ['BusinessContactsManagerJourneyExtended/Assets/*.png']
-  # }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  # ――― Dependencies ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.dependency 'BusinessContactsManagerJourney', '~> 2.1.1'
+#  s.dependency 'BackbaseIdentity', '>= 2.3.0'
+#  s.dependency 'Backbase', '>= 7.9.0'
+  s.dependency 'BusinessDesign', '>= 2.0'
+  s.dependency 'BackbaseObservability', '>= 1.0'
+  s.dependency 'Resolver', '>= 1.2.1'
+  s.dependency 'RxSwift', '~> 5'
+  s.dependency 'RxCocoa', '~> 5'
+  s.dependency 'SwiftLint'
+#  pod 'BusinessDesign', '~> 2.0.0'
+  s.dependency 'ContactsClient2', '1.4.1'
+  s.dependency 'SDWebImage', '~> 5.12'
+  s.dependency 'Shimmer', '1.0.2'
 end

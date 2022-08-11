@@ -1,0 +1,6 @@
+framework module BusinessContactsManagerJourneyExtended {
+  umbrella header "BusinessContactsManagerJourneyExtended-umbrella.h"
+
+  export *
+  module * { export * }
+}
